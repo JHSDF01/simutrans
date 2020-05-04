@@ -284,6 +284,8 @@ private:
 	// true if companies can make ways public
 	bool disable_make_way_public;
 
+	uint16 max_cityroad_speed;
+
 public:
 	/* the big cost section */
 	sint32 maint_building;	// normal building
@@ -600,6 +602,9 @@ public:
 
 	uint32 get_default_ai_construction_speed() const { return default_ai_construction_speed; }
 	void set_default_ai_construction_speed( uint32 n ) { default_ai_construction_speed = n; }
+
+	uint16 get_max_cityroad_speed() const {return max_cityroad_speed;}
+	void set_max_cityroad_speed(uint16 l) {max_cityroad_speed=l;}
 };
 
 #endif

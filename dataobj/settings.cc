@@ -299,6 +299,8 @@ settings_t::settings_t() :
 	frames_per_second = 20;
 	frames_per_step = 4;
 	server_frames_ahead = 4;
+
+	max_cityroad_speed = 60;
 }
 
 
@@ -826,6 +828,9 @@ void settings_t::rdwr(loadsave_t *file)
 		}
 		if(  file->is_version_atleast(120, 9)  ) {
 			file->rdwr_long(allow_merge_distant_halt);
+		}
+		if(  file->is_version_atleast(121, 1)  ) {
+			file->rdwr_short(max_cityroad_speed);
 		}
 		// otherwise the default values of the last one will be used
 	}
@@ -1469,6 +1474,8 @@ void settings_t::parse_simuconf(tabfile_t& simuconf, sint16& disp_width, sint16&
 		world_minimum_height = world_maximum_height-1;
 	}
 
+	max_cityroad_speed = contents.get_int("max_cityroad_speed", max_cityroad_speed);
+	
 	// Default pak file path
 	objfilename = ltrim(contents.get_string("pak_file_path", "" ) );
 

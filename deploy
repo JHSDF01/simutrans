@@ -1,0 +1,10 @@
+echo "r:just run with gdb"
+echo "c:compile and run"
+read C
+if [ "$C" == "c" ]
+then
+	cd /c/Users/masak/Documents/GitHub/simutrans
+	make -j4
+	cp sim.exe /c/Simutrans/
+fi
+gdb /c/Simutrans/sim.exe
